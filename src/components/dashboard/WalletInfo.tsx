@@ -12,7 +12,7 @@ const WalletInfo = () => {
         <span>자산 가치</span>
       </S.TitleLine>
       {data.map((item) => {
-        return <WalletList />;
+        return <WalletList key={item} />;
       })}
     </CMSection>
   );

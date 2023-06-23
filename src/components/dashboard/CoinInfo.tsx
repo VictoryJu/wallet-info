@@ -22,7 +22,7 @@ const S = {
     font-weight: 700;
   `,
   WalletLine: styled.div`
-    margin-top: 10px;
+    margin-top: 25px;
   `,
   WalletText: styled.div`
     font-size: 15px;

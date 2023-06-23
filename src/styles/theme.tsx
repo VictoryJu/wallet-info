@@ -6,6 +6,9 @@ declare module 'styled-components' {
       primary01: '#123ACC';
       primary02: '#0E42EE';
       primary03: '#919FC8';
+      primary04: '#E7EBF8';
+      primary05: '#5A31FF';
+      primary06: '#4098FF';
       gray01: '#EDEFF5';
       gray02: '#7C89A8';
       gray06: '#6C7180';
@@ -20,6 +23,9 @@ export const theme: DefaultTheme = {
     primary01: '#123ACC',
     primary02: '#0E42EE',
     primary03: '#919FC8',
+    primary04: '#E7EBF8',
+    primary05: '#5A31FF',
+    primary06: '#4098FF',
     gray01: '#EDEFF5',
     gray02: '#7C89A8',
     gray06: '#6C7180',

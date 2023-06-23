@@ -2,6 +2,7 @@ import React from 'react';
 import CMSection from '../common/CMSection';
 import styled from 'styled-components';
 import CMButton from '../common/CMButton';
+import CMProgressBar from '../common/CMProgressBar';
 
 const Donation = () => {
   return (
@@ -14,6 +15,9 @@ const Donation = () => {
         <S.DonationText>내 기부량</S.DonationText>
         <S.DonationValue> 0.127 ETH</S.DonationValue>
       </S.DonationLine>
+      <S.ProgressLine>
+        <CMProgressBar value={10} maxValue={100} />       
+      </S.ProgressLine>
       <S.TargetWrap>
         <S.TargetLine>
           <S.TargetText>달성률</S.TargetText>
@@ -45,6 +49,9 @@ const S = {
   `,
   DonationValue: styled.span`
     font-weight: 700;
+  `,
+  ProgressLine:styled.div`
+    padding-bottom:10px;
   `,
   TargetWrap: styled.div`
     display: flex;

@@ -12,13 +12,13 @@ const Header = () => {
         <S.TitleIcon/>
         {
           walletId ? 
-          <CMButton height='32px' description='지갑 연결하기' />
-          :
           <S.WalletLine>
             <S.FoxIcon/>
             <S.WalletKey>0xeF...3efb</S.WalletKey>
             <S.DesConnectionTag>연결 해제</S.DesConnectionTag>
           </S.WalletLine>
+          :
+          <CMButton height='32px' description='지갑 연결하기' />
         }
       </S.Wrap>
     </S.Container>
