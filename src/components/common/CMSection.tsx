@@ -18,7 +18,7 @@ const CMSection = ({ children, title }: Props) => {
 const S = {
   Container: styled.section`
     background-color: #fff;
-    padding: 25px;
+    padding: 32px;
     border-radius: 12px;
   `,
   Title: styled.div`
