@@ -9,7 +9,8 @@ declare module 'styled-components' {
       gray01: '#EDEFF5';
       gray02: '#7C89A8';
       gray06: '#6C7180';
-      black: '#22222';
+      black02: '#22222';
+      black03: '#333333';
     };
   }
 }
@@ -22,7 +23,8 @@ export const theme: DefaultTheme = {
     gray01: '#EDEFF5',
     gray02: '#7C89A8',
     gray06: '#6C7180',
-    black: '#22222',
+    black02: '#22222',
+    black03: '#333333',
   },
 };
 

@@ -32,7 +32,7 @@ const S = {
   `,
   WalletValue: styled.div`
     font-size: 19px;
-    color: ${({ theme }) => theme.colors.black};
+    color: ${({ theme }) => theme.colors.black02};
     font-weight: 700;
     margin-top: 5px;
   `,

@@ -8,7 +8,7 @@ const Donation = () => {
     <CMSection title="내 이더 기부액">
       <S.DonataionWrap>
         <S.DonationTarget>$210.28</S.DonationTarget>
-        <CMButton description="기부하기" />
+        <CMButton height='32px' description="기부하기" />
       </S.DonataionWrap>
       <S.DonationLine>
         <S.DonationText>내 기부량</S.DonationText>
