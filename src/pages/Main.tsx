@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Donation from '../components/dashboard/Donation';
+import CoinInfo from '../components/dashboard/CoinInfo';
 
 const Main = () => {
   return (
@@ -8,6 +9,7 @@ const Main = () => {
       <S.Title>대시보드</S.Title>
       <S.GridWrap>
         <Donation/>
+        <CoinInfo />
       </S.GridWrap>
     </S.Container>
   );
