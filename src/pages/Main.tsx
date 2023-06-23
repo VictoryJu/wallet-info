@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Donation from '../components/dashboard/Donation';
 import CoinInfo from '../components/dashboard/CoinInfo';
+import WalletDetail from '../components/dashboard/WalletDetail';
+import WalletInfo from '../components/dashboard/WalletInfo';
 
 const Main = () => {
   return (
@@ -10,6 +12,8 @@ const Main = () => {
       <S.GridWrap>
         <Donation/>
         <CoinInfo />
+        <WalletDetail/>
+        <WalletInfo/>
       </S.GridWrap>
     </S.Container>
   );
