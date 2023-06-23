@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import Donation from '../components/dashboard/Donation';
 
 const Main = () => {
   return (
     <S.Container>
       <S.Title>대시보드</S.Title>
-      <S.GridWrap></S.GridWrap>
+      <S.GridWrap>
+        <Donation/>
+      </S.GridWrap>
     </S.Container>
   );
 };
