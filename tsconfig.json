@@ -8,6 +8,6 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["src","src/custom.d.ts"],
+  "include": ["src","src/custom.d.ts","src/window.d.ts"],
   "exclude": ["node_modules"]
 }

@@ -5,11 +5,12 @@ type Props = {
   description: string;
   width?: string;
   height?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const CMButton = ({ description, width, height }: Props) => {
+const CMButton = ({ description, width, height,onClick }: Props) => {
   return (
-    <S.Button width={width} height={height}>
+    <S.Button onClick={onClick} width={width} height={height}>
       {description}
     </S.Button>
   );
