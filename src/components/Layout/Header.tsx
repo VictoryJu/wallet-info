@@ -4,28 +4,17 @@ import TitleSvg from '../../assets/imgs/TitleIcon.svg'
 import CMButton from '../common/CMButton'
 import FoxSvg from '../../assets/imgs/FoxIcon.svg'
 import { ethers } from 'ethers'
+import { connectWallet } from '../services/rpc'
 
 const Header = () => {
   const [walletId,setWalletId] = useState("");
+  const handleConnectBtn = async ():Promise<void> =>{
+    const walletAddress = await connectWallet();
+    if(walletAddress) setWalletId(walletAddress);
+  }
 
-  const connectWallet = async ()=>{
-    try{
-      if (typeof window.ethereum !== 'undefined'){
-        const provider = new ethers.BrowserProvider(window.ethereum);
-        // 연결됐을때
-        await provider.send("eth_requestAccounts", [])
-        const signer = await provider.getSigner();
-        setWalletId(signer.address);
-      }else{
-        window.open("https://support.metamask.io/hc/ko/articles/360015489531-MetaMask-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0",'_blank');
-      }
-    }catch(error:any){
-      if (error.code === 4001) {
-        console.log('Please connect to MetaMask.');
-      } else {
-        console.log(error);
-      }
-    }
+  const disconnectBtn = ()=>{
+    setWalletId("");
   }
 
   return (
@@ -37,11 +26,11 @@ const Header = () => {
           <S.WalletLine>
             <S.FoxIcon/>
             <S.WalletKey>0xeF...3efb</S.WalletKey>
-            <S.DesConnectionTag>연결 해제</S.DesConnectionTag>
+            <S.DesConnectionTag onClick={disconnectBtn}>연결 해제</S.DesConnectionTag>
           </S.WalletLine>
           :
           <>
-          <CMButton onClick={connectWallet} height='32px' description='지갑 연결하기' />
+          <CMButton onClick={handleConnectBtn} height='32px' description='지갑 연결하기' />
           </>
         }
       </S.Wrap>
