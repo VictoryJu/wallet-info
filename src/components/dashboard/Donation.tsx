@@ -16,7 +16,7 @@ const Donation = () => {
         <S.DonationValue> 0.127 ETH</S.DonationValue>
       </S.DonationLine>
       <S.ProgressLine>
-        <CMProgressBar value={10} maxValue={100} />       
+        <CMProgressBar value={0.127} maxValue={1} />       
       </S.ProgressLine>
       <S.TargetWrap>
         <S.TargetLine>

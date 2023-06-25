@@ -4,7 +4,7 @@ import TitleSvg from '../../assets/imgs/TitleIcon.svg'
 import CMButton from '../common/CMButton'
 import FoxSvg from '../../assets/imgs/FoxIcon.svg'
 import { ethers } from 'ethers'
-import { connectWallet } from '../services/rpc'
+import { connectWallet } from '../../services/rpc'
 
 const Header = () => {
   const [walletId,setWalletId] = useState("");

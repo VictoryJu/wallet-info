@@ -5,14 +5,17 @@ import { theme } from './styles/theme';
 import GlobalStyles from './styles/global-styles';
 import Header from './components/Layout/Header';
 import { ethers } from 'ethers';
+import { RecoilRoot } from 'recoil';
 
 const App = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <Header/>
-      <Main />
-    </ThemeProvider>
+    <RecoilRoot>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Header/>
+        <Main />
+      </ThemeProvider>
+    </RecoilRoot>
   );
 };
 
