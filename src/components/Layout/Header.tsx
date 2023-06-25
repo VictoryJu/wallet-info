@@ -5,16 +5,20 @@ import CMButton from '../common/CMButton'
 import FoxSvg from '../../assets/imgs/FoxIcon.svg'
 import { ethers } from 'ethers'
 import { connectWallet } from '../../services/rpc'
+import {useRecoilState} from 'recoil';
+import { walletState } from '../../recoil/walletStats'
+import { addressFormat } from '../../utils/stringFormat'
 
 const Header = () => {
-  const [walletId,setWalletId] = useState("");
-  const handleConnectBtn = async ():Promise<void> =>{
+  const [walletId,setWalletId] = useRecoilState(walletState);
+
+  const handleConnectBtn = async ()=>{
     const walletAddress = await connectWallet();
     if(walletAddress) setWalletId(walletAddress);
   }
 
   const disconnectBtn = ()=>{
-    setWalletId("");
+    setWalletId(null);
   }
 
   return (
@@ -25,7 +29,7 @@ const Header = () => {
           walletId ? 
           <S.WalletLine>
             <S.FoxIcon/>
-            <S.WalletKey>0xeF...3efb</S.WalletKey>
+            <S.WalletKey>{addressFormat(walletId)}</S.WalletKey>
             <S.DesConnectionTag onClick={disconnectBtn}>연결 해제</S.DesConnectionTag>
           </S.WalletLine>
           :

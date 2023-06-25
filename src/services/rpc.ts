@@ -7,7 +7,7 @@ const provider = new ethers.BrowserProvider(window.ethereum);
 export const connectWallet = async ()=>{
   try{
     if (typeof window.ethereum !== 'undefined'){
-      const address  = await provider.send("eth_requestAccounts", [])
+      const address  = (await provider.send("eth_requestAccounts", []))[0];
       return address
     }else{
       window.open("https://metamask.io/download/",'_blank');
