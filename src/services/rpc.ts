@@ -1,4 +1,4 @@
-import { Wallet, ethers } from "ethers";
+import { Wallet, ethers, parseEther } from "ethers";
 import { testAddress } from "../data/address";
 import { donateAbi, getDonationAmountAbi, getPoolTokenInfoAbi } from "../data/abi";
 
@@ -44,7 +44,11 @@ export const getDonationAmount = async ()=>{
 
 export const donate = async (amount:number)=>{
   try{
-    
+    const signer = await provider.getSigner();
+    const contract = new ethers.Contract(contractAddress,donateAbi,signer);
+    const amount = {value:ethers.parseEther("0.001"),gasLimit:1}
+    const result = await contract.donate(amount);
+    return result
   }catch(e){
     console.log(e)
   }

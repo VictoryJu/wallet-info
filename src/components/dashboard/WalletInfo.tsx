@@ -3,6 +3,7 @@ import CMSection from '../common/CMSection';
 import styled from 'styled-components';
 import WalletList from './WalletList';
 import { IToken } from '../../intreface/token';
+import CMEmpty from '../common/CMEmpty';
 
 type Props = {
   tokens: IToken[]
@@ -14,9 +15,14 @@ const WalletInfo = ({tokens}:Props) => {
         <span>자산 수량</span>
         <span>자산 가치</span>
       </S.TitleLine>
-      {tokens.map((token:IToken) => {
-        return <WalletList key={token.name} token={token} />;
-      })}
+      {
+        tokens.length>0 ?
+        tokens.map((token:IToken) => {
+          return <WalletList key={token.name} token={token} />;
+        })
+        :
+        <CMEmpty/>
+      }
     </CMSection>
   );
 };

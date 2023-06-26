@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { IToken } from '../../intreface/token';
 import { tokenPrice } from '../../data/coinInfo';
 import icon from '../../assets/imgs/tDAI.png'
+import { devices } from '../../styles/theme';
 type Props ={
   token: IToken
 }
@@ -39,9 +40,14 @@ const S = {
   Wrap: styled.div`
     display: flex;
     justify-content: 'space-between';
-    padding: 20px 0px;
-    border-bottom: 1px solid ${({ theme }) => theme.colors.gray01};
     flex: 1;
+    @media ${devices.desktop} {
+      border-bottom: 1px solid ${({ theme }) => theme.colors.gray01};      
+      padding: 20px 0px;
+    }
+    @media ${devices.mobile} {
+      padding: 18px 0px;
+    }
   `,
   Line: styled.div`
     flex: 1;

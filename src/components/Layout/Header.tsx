@@ -7,6 +7,7 @@ import { connectWallet } from '../../services/rpc'
 import {useRecoilState} from 'recoil';
 import { walletState } from '../../recoil/walletStats'
 import { addressFormat } from '../../utils/stringFormat'
+import { devices } from '../../styles/theme'
 
 const Header = () => {
   const [walletId,setWalletId] = useRecoilState(walletState);
@@ -46,6 +47,9 @@ const S = {
     background-color:#fff;
     width:100%;
     height:120px;
+    @media ${devices.mobile} {
+      display:none;
+    }
   `,
   Wrap: styled.div`
     max-width:1200px;

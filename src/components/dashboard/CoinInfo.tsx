@@ -3,6 +3,7 @@ import CMSection from '../common/CMSection';
 import styled from 'styled-components';
 import { tokenPrice } from '../../data/coinInfo';
 import { IToken } from '../../intreface/token';
+import { devices } from '../../styles/theme';
 
 type Props = {
   tokens: IToken[]
@@ -16,9 +17,9 @@ const CoinInfo = ({tokens}:Props) => {
       setTotalPrice(price.toLocaleString());
     }
   },[tokens])
-  
+
   return (
-    <CMSection title="ETH 가격">
+    <CMSection isIcon={true} title="ETH 가격">
       <S.PriceLine>${tokenPrice["tETH"]}</S.PriceLine>
       <S.WalletLine>
         <S.WalletText>풀 자산 규모</S.WalletText>
@@ -30,10 +31,12 @@ const CoinInfo = ({tokens}:Props) => {
 
 const S = {
   PriceLine: styled.div`
-    padding: 10px 0px;
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray01};
     font-size: 32px;
     font-weight: 700;
+    @media ${devices.desktop} {
+      padding: 10px 0px;      
+    }
   `,
   WalletLine: styled.div`
     margin-top: 25px;

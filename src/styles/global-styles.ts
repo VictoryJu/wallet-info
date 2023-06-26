@@ -16,6 +16,7 @@ const GlobalStyles = createGlobalStyle`
     cursor: pointer;
   }
   html,
+  #root,
   body {
     background-color: #F6F7FA;
     height: 100%;
@@ -29,9 +30,14 @@ const GlobalStyles = createGlobalStyle`
         width:30% !important;
       }
       @media ${devices.mobile} {
-        width:48% !important;
+        width:40% !important;
       }
     }
+  }
+  .apexcharts-legend-marker{
+    @media ${devices.mobile} {
+        margin-right:10px !important;
+      }
   }
 `;
 export default GlobalStyles;
