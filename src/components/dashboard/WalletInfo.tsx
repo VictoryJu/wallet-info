@@ -2,17 +2,20 @@ import React from 'react';
 import CMSection from '../common/CMSection';
 import styled from 'styled-components';
 import WalletList from './WalletList';
+import { IToken } from '../../intreface/token';
 
-const WalletInfo = () => {
-  const data = [1, 2, 3, 4, 5];
+type Props = {
+  tokens: IToken[]
+}
+const WalletInfo = ({tokens}:Props) => {
   return (
     <CMSection title="자산 정보">
       <S.TitleLine>
         <span>자산 수량</span>
         <span>자산 가치</span>
       </S.TitleLine>
-      {data.map((item) => {
-        return <WalletList key={item} />;
+      {tokens.map((token:IToken) => {
+        return <WalletList key={token.name} token={token} />;
       })}
     </CMSection>
   );

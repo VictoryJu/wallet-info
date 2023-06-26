@@ -1,8 +1,16 @@
 import React from 'react';
 import CMSection from '../common/CMSection';
 import styled from 'styled-components';
+import { IToken } from '../../intreface/token';
+import { tokenPrice } from '../../data/coinInfo';
 
-const WalletList = () => {
+type Props ={
+  token: IToken
+}
+
+const WalletList = ({token}:Props) => {
+  const tokenTotalPrice = parseInt(token.amount) * tokenPrice[token.name];
+  console.log(token.amount)
   return (
     <>
       <S.Container>
@@ -10,11 +18,11 @@ const WalletList = () => {
         <S.Wrap>
           <S.Line>
             <S.CoinLine>
-              <S.CoinText>WEMIX</S.CoinText>
-              <S.CoinAmount>3,728,323</S.CoinAmount>
+              <S.CoinText>{token.name}</S.CoinText>
+              <S.CoinAmount>{token.amount}</S.CoinAmount>
             </S.CoinLine>
           </S.Line>
-          <S.CoinValue>$10,093,182</S.CoinValue>
+          <S.CoinValue>${tokenTotalPrice.toLocaleString()}</S.CoinValue>
         </S.Wrap>
       </S.Container>
     </>

@@ -1,7 +1,4 @@
-export interface ICoins {
-  tETH : number,
-  tWEMIX: number,
-  tUSDT: number,
-  tUSDC: number,
-  tDAI: number
+export interface IToken {
+  name:string;
+  amount:string;
 }
