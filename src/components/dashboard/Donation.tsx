@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CMSection from '../common/CMSection';
 import styled from 'styled-components';
 import CMButton from '../common/CMButton';
 import CMProgressBar from '../common/CMProgressBar';
+import { useRecoilValue } from 'recoil';
+import { walletState } from '../../recoil/walletStats';
 
 const Donation = () => {
+  const walletId = useRecoilValue(walletState);
+  const fetchDonateAmount = ()=>{
+    
+  }
+  useEffect(()=>{
+    if(walletId) fetchDonateAmount();
+  },[walletId])
   return (
     <CMSection title="내 이더 기부액">
       <S.DonataionWrap>

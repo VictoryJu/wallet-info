@@ -8,13 +8,12 @@ import {useRecoilValue} from 'recoil';
 import { walletState } from '../recoil/walletStats';
 import { getTokenList } from '../services/rpc';
 import { IToken } from '../intreface/token';
-import { INITIAL_TOKENS, tokenIndex } from '../data/coinInfo';
-import { ethers, formatEther } from 'ethers';
+import { tokenIndex } from '../data/coinInfo';
 import { etherFormat } from '../utils/stringFormat';
 
 const Main = () => {
   const walletId = useRecoilValue(walletState);
-  const [tokens, setTokens] = useState<IToken[]>(INITIAL_TOKENS);
+  const [tokens, setTokens] = useState<IToken[]>([]);
 
   const fetchTokenList = async ()=>{
     const tokens = await getTokenList()
@@ -34,19 +33,20 @@ const Main = () => {
 
   useEffect(()=>{
     if(walletId) fetchTokenList();
-    else setTokens(INITIAL_TOKENS);
   },[walletId])
 
   return (
-    <S.Container>
-      <S.Title>대시보드</S.Title>
-      <S.GridWrap>
-        <Donation/>
-        <CoinInfo />
-        <WalletDetail />
-        <WalletInfo tokens={tokens} />
-      </S.GridWrap>
-    </S.Container>
+    <>
+      <S.Container>
+        <S.Title>대시보드</S.Title>
+        <S.GridWrap>
+          <Donation/>
+          <CoinInfo />
+          <WalletDetail tokens={tokens} />
+          <WalletInfo tokens={tokens} />
+        </S.GridWrap>
+      </S.Container>
+    </>
   );
 };
 

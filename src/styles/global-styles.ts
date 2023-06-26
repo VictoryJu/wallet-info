@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import './font.css';
+import { devices } from './theme';
 const GlobalStyles = createGlobalStyle`
   *,
   *::before,
@@ -18,6 +19,19 @@ const GlobalStyles = createGlobalStyle`
   body {
     background-color: #F6F7FA;
     height: 100%;
+  }
+  .apexcharts-legend{
+    display:flex !important;
+    justify-content:flex-start !important;
+    margin-top:40px !important;
+    div{
+      @media ${devices.desktop} {
+        width:30% !important;
+      }
+      @media ${devices.mobile} {
+        width:48% !important;
+      }
+    }
   }
 `;
 export default GlobalStyles;
