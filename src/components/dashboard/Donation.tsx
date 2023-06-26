@@ -20,7 +20,6 @@ const Donation = () => {
   }
 
   const handleDonateBtn = async (amount:number)=>{
-    setDonationAmount(prev=>prev+0.1);
     const result = await donate(amount);
     if(result) await fetchDonateAmount();
   }
