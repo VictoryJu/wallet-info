@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import TitleSvg from '../../assets/imgs/TitleIcon.svg'
 import CMButton from '../common/CMButton'
 import FoxSvg from '../../assets/imgs/FoxIcon.svg'
-import { ethers } from 'ethers'
 import { connectWallet } from '../../services/rpc'
 import {useRecoilState} from 'recoil';
 import { walletState } from '../../recoil/walletStats'

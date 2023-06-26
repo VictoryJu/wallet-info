@@ -22,7 +22,7 @@ const Main = () => {
   }
 
   const handleFormatEther = (tokens:string[]) =>{
-    const formatTokens = tokens.map((item:string,idx:number)=>{
+    const formatTokens = tokens?.map((item:string,idx:number)=>{
       return {
         name: tokenIndex[idx],
         amount: etherFormat(item).toString()

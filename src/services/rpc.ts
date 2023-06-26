@@ -1,6 +1,6 @@
-import { ethers } from "ethers";
+import { Wallet, ethers } from "ethers";
 import { testAddress } from "../data/address";
-import { getDonationAmountAbi, getPoolTokenInfoAbi } from "../data/abi";
+import { donateAbi, getDonationAmountAbi, getPoolTokenInfoAbi } from "../data/abi";
 
 const provider = new ethers.BrowserProvider(window.ethereum);
 const contractAddress = testAddress;
@@ -24,7 +24,6 @@ export const connectWallet = async ()=>{
 
 export const getTokenList = async ()=>{
   try{
-    //test후 본래 addredd로 교체
     const contract = new ethers.Contract(contractAddress, getPoolTokenInfoAbi, provider);
     const coins = await contract.getPoolTokenInfo();
     return coins
@@ -40,5 +39,13 @@ export const getDonationAmount = async ()=>{
     return donationAmount
   }catch(e){
     console.log(e);
+  }
+}
+
+export const donate = async (amount:number)=>{
+  try{
+    
+  }catch(e){
+    console.log(e)
   }
 }

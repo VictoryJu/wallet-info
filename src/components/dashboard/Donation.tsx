@@ -5,17 +5,23 @@ import CMButton from '../common/CMButton';
 import CMProgressBar from '../common/CMProgressBar';
 import { useRecoilValue } from 'recoil';
 import { walletState } from '../../recoil/walletStats';
-import { getDonationAmount } from '../../services/rpc';
+import { donate, getDonationAmount } from '../../services/rpc';
 import { etherFormat } from '../../utils/stringFormat';
 import { tokenPrice } from '../../data/coinInfo';
 
 const Donation = () => {
   const walletId = useRecoilValue(walletState);
+  const amountValue = 0.5
   const [donationAmount,setDonationAmount] = useState(0);
 
-  const fetchDonateAmount = async()=>{
+  const fetchDonateAmount = async ()=>{
     const amount = await getDonationAmount();
     setDonationAmount(etherFormat(amount));
+  }
+
+  const handleDonateBtn = async (amount:number)=>{
+    const result = await donate(amount);
+    fetchDonateAmount();
   }
 
   useEffect(()=>{
@@ -26,7 +32,7 @@ const Donation = () => {
     <CMSection title="내 이더 기부액">
       <S.DonataionWrap>
         <S.DonationTarget>${donationAmount * tokenPrice["tETH"]}</S.DonationTarget>
-        <CMButton height='32px' description="기부하기" />
+        <CMButton onClick={()=>handleDonateBtn(amountValue)} height='32px' description="기부하기" />
       </S.DonataionWrap>
       <S.DonationLine>
         <S.DonationText>내 기부량</S.DonationText>

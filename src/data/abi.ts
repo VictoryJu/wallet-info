@@ -64,3 +64,13 @@ export const getDonationAmountAbi =
         "type": "function"
     }
 ]
+
+export const donateAbi = [
+    {
+        "inputs": [],
+        "name": "donate",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    }
+]
