@@ -6,7 +6,7 @@ import WalletDetail from '../components/dashboard/WalletDetail';
 import WalletInfo from '../components/dashboard/WalletInfo';
 import {useRecoilValue} from 'recoil';
 import { walletState } from '../recoil/walletStats';
-import { getTokenList } from '../services/rpc';
+import { getTokenList} from '../services/rpc';
 import { IToken } from '../intreface/token';
 import { tokenIndex } from '../data/coinInfo';
 import { etherFormat } from '../utils/stringFormat';
@@ -41,7 +41,7 @@ const Main = () => {
         <S.Title>대시보드</S.Title>
         <S.GridWrap>
           <Donation/>
-          <CoinInfo />
+          <CoinInfo tokens={tokens} />
           <WalletDetail tokens={tokens} />
           <WalletInfo tokens={tokens} />
         </S.GridWrap>

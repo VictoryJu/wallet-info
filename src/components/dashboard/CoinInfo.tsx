@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CMSection from '../common/CMSection';
 import styled from 'styled-components';
+import { tokenPrice } from '../../data/coinInfo';
+import { IToken } from '../../intreface/token';
 
-const CoinInfo = () => {
+type Props = {
+  tokens: IToken[]
+}
+const CoinInfo = ({tokens}:Props) => {
+  const [totalPrice,setTotalPrice] = useState<string>("0");
+
+  useEffect(()=>{
+    if(tokens.length>0){
+      const price = tokens.map(token=>parseFloat(token.amount)*tokenPrice[token.name]).reduce((a,b)=>a+b);
+      setTotalPrice(price.toLocaleString());
+    }
+  },[tokens])
+  
   return (
     <CMSection title="ETH 가격">
-      <S.PriceLine>$1,567.22</S.PriceLine>
+      <S.PriceLine>${tokenPrice["tETH"]}</S.PriceLine>
       <S.WalletLine>
         <S.WalletText>풀 자산 규모</S.WalletText>
-        <S.WalletValue>$17,903.392</S.WalletValue>
+        <S.WalletValue>${totalPrice}</S.WalletValue>
       </S.WalletLine>
     </CMSection>
   );
