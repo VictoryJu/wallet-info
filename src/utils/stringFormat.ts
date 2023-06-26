@@ -4,7 +4,7 @@ export const addressFormat = (address:string):string => {
   return `${address.slice(0,4)}....${address.slice(-4)}`
 }
 
-export const etherFormat = (ether:string):string =>{
+export const etherFormat = (ether:string):number =>{
   const etherValue = ethers.formatEther(ether);
-  return etherValue
+  return parseFloat(etherValue)
 }

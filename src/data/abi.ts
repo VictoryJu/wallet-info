@@ -41,3 +41,26 @@ export const getPoolTokenInfoAbi =
     "type": "function"
   }
 ];
+
+export const getDonationAmountAbi = 
+[
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "addr",
+                "type": "address"
+            }
+        ],
+        "name": "getDonationAmount",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "donateVolume",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    }
+]

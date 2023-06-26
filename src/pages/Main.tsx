@@ -25,7 +25,7 @@ const Main = () => {
     const formatTokens = tokens.map((item:string,idx:number)=>{
       return {
         name: tokenIndex[idx],
-        amount: etherFormat(item)
+        amount: etherFormat(item).toString()
       }
     });
     return formatTokens

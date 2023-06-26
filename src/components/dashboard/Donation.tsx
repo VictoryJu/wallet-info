@@ -1,36 +1,44 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import CMSection from '../common/CMSection';
 import styled from 'styled-components';
 import CMButton from '../common/CMButton';
 import CMProgressBar from '../common/CMProgressBar';
 import { useRecoilValue } from 'recoil';
 import { walletState } from '../../recoil/walletStats';
+import { getDonationAmount } from '../../services/rpc';
+import { etherFormat } from '../../utils/stringFormat';
+import { tokenPrice } from '../../data/coinInfo';
 
 const Donation = () => {
   const walletId = useRecoilValue(walletState);
-  const fetchDonateAmount = ()=>{
-    
+  const [donationAmount,setDonationAmount] = useState(0);
+
+  const fetchDonateAmount = async()=>{
+    const amount = await getDonationAmount();
+    setDonationAmount(etherFormat(amount));
   }
+
   useEffect(()=>{
     if(walletId) fetchDonateAmount();
   },[walletId])
+  
   return (
     <CMSection title="내 이더 기부액">
       <S.DonataionWrap>
-        <S.DonationTarget>$210.28</S.DonationTarget>
+        <S.DonationTarget>${donationAmount * tokenPrice["tETH"]}</S.DonationTarget>
         <CMButton height='32px' description="기부하기" />
       </S.DonataionWrap>
       <S.DonationLine>
         <S.DonationText>내 기부량</S.DonationText>
-        <S.DonationValue> 0.127 ETH</S.DonationValue>
+        <S.DonationValue> {donationAmount} ETH</S.DonationValue>
       </S.DonationLine>
       <S.ProgressLine>
-        <CMProgressBar value={0.127} maxValue={1} />       
+        <CMProgressBar value={donationAmount} maxValue={1} />       
       </S.ProgressLine>
       <S.TargetWrap>
         <S.TargetLine>
           <S.TargetText>달성률</S.TargetText>
-          <S.TargetValue>12.80%</S.TargetValue>
+          <S.TargetValue>{(donationAmount * 100).toFixed(2)}%</S.TargetValue>
         </S.TargetLine>
         <S.TargetCoin>1ETH</S.TargetCoin>
       </S.TargetWrap>

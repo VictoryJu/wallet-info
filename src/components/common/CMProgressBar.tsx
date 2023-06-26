@@ -11,7 +11,7 @@ const CMProgressBar = ({value,maxValue}:Props) => {
 
   useEffect(() => {
     const percent = maxValue ? Math.floor((value / maxValue) * 100) : 0;
-    setDealt(percent);
+    percent > 100 ? setDealt(100) : setDealt(percent);
   }, [value, maxValue]);
 
   return (
