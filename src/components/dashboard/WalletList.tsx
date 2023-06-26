@@ -3,23 +3,24 @@ import CMSection from '../common/CMSection';
 import styled from 'styled-components';
 import { IToken } from '../../intreface/token';
 import { tokenPrice } from '../../data/coinInfo';
-
+import icon from '../../assets/imgs/tDAI.png'
 type Props ={
   token: IToken
 }
 
+
 const WalletList = ({token}:Props) => {
-  const tokenTotalPrice = parseInt(token.amount) * tokenPrice[token.name];
-  console.log(token.amount)
+  const roundAmount = parseFloat(token.amount).toFixed(3);
+  const tokenTotalPrice = parseFloat(token.amount) * tokenPrice[token.name];
   return (
     <>
       <S.Container>
-        <S.Icon src="https://image.rocketpunch.com/company/126980/wemadetree_logo_1598350068.png?s=400x400&t=inside" />
+        <S.Icon src={`./imgs/${token.name}.png`} />
         <S.Wrap>
           <S.Line>
             <S.CoinLine>
               <S.CoinText>{token.name}</S.CoinText>
-              <S.CoinAmount>{token.amount}</S.CoinAmount>
+              <S.CoinAmount>{roundAmount}</S.CoinAmount>
             </S.CoinLine>
           </S.Line>
           <S.CoinValue>${tokenTotalPrice.toLocaleString()}</S.CoinValue>
@@ -67,7 +68,7 @@ const S = {
     font-weight: 700;
     font-size: 15px;
     letter-spacing: -0.4px;
-  `,
+  `
 };
 
 export default WalletList;
